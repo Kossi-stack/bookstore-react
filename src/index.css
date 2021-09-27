@@ -3,6 +3,27 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.App {
-  color: red;
+.app {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navBarWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+}
+
+.navLink {
+  margin-right: 2rem;
+}
+
+.navLink:last-child {
+  margin-right: 0;
 }
