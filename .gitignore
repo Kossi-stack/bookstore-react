@@ -7,9 +7,6 @@
 
 # testing
 /coverage
-.eslintrc.json
-.babelrc
-.stylelintrc.json
 
 # production
 /build
