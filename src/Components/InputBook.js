@@ -38,7 +38,7 @@ const InputBooks = (props) => {
           value={state.title}
         />
         <input
-          placeholder="arthur"
+          placeholder="authur"
           onChange={handleChange}
           name="author"
           value={state.author}
