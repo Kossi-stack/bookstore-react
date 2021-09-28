@@ -17,6 +17,8 @@ const InputBooks = (props) => {
         title: '',
         author: '',
       });
+    } else {
+      alert('please add book')
     }
   };
 

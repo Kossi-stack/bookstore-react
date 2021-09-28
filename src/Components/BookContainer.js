@@ -4,12 +4,12 @@ import InputBooks from './InputBook';
 
 const initialState = [
   {
-    arthur: 'Juliana',
+    author: 'Juliana',
     title: 'Think and code',
     id: 1,
   },
   {
-    arthur: 'May',
+    author: 'May',
     title: 'Think and walk',
     id: 2,
   },
@@ -28,12 +28,14 @@ const BookContainer = () => {
     setBooks([...book, newBook]);
   };
 
+  console.log(book);
+
   return (
     <div>
       <ul>
         {book.map((book) => (
           <li key={book.id}>
-            <p>{book.arthur}</p>
+            <p>{book.author}</p>
             <p>{book.title}</p>
           </li>
         ))}
