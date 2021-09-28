@@ -1,6 +1,5 @@
-/* eslint-disable */
-
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 const InputBooks = (props) => {
@@ -18,7 +17,7 @@ const InputBooks = (props) => {
         author: '',
       });
     } else {
-      alert('please add book')
+      alert('please add book');
     }
   };
 
@@ -45,6 +44,10 @@ const InputBooks = (props) => {
       </form>
     </div>
   );
+};
+
+InputBooks.propTypes = {
+  addBookProps: PropTypes.func.isRequired,
 };
 
 export default InputBooks;
