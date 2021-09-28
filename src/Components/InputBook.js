@@ -8,6 +8,8 @@ const InputBooks = (props) => {
     author: '',
   });
 
+  const [errorMsg, setErrorMsg] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (state.title.trim() && state.author.trim()) {
@@ -16,6 +18,9 @@ const InputBooks = (props) => {
         title: '',
         author: '',
       });
+      setErrorMsg('');
+    } else {
+      setErrorMsg('Please add title and author');
     }
   };
 
@@ -31,16 +36,15 @@ const InputBooks = (props) => {
           onChange={handleChange}
           name="title"
           value={state.title}
-          required
         />
         <input
           placeholder="arthur"
           onChange={handleChange}
           name="author"
           value={state.author}
-          required
         />
         <Button label="Submit" />
+        <p className="errorMsg">{errorMsg}</p>
       </form>
     </div>
   );
