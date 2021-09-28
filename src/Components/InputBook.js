@@ -16,8 +16,6 @@ const InputBooks = (props) => {
         title: '',
         author: '',
       });
-    } else {
-      alert('please add book');
     }
   };
 
@@ -33,12 +31,14 @@ const InputBooks = (props) => {
           onChange={handleChange}
           name="title"
           value={state.title}
+          required
         />
         <input
           placeholder="arthur"
           onChange={handleChange}
           name="author"
           value={state.author}
+          required
         />
         <Button label="Submit" />
       </form>
