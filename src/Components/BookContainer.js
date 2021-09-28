@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import InputBooks from './InputBook';
+import BookList from './BookList';
 
 const initialState = [
   {
@@ -34,17 +35,7 @@ const BookContainer = () => {
 
   return (
     <div>
-      <ul>
-        {book.map((book) => (
-          <li key={book.id}>
-            <p>{book.author}</p>
-            <p>{book.title}</p>
-            <button type="button" onClick={() => removeBook(book.id)}>
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+      <BookList books={book} removeBookProps={removeBook} />
       <InputBooks addBookProps={addBook} />
     </div>
   );
