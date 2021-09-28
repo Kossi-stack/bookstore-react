@@ -28,7 +28,9 @@ const BookContainer = () => {
     setBooks([...book, newBook]);
   };
 
-  console.log(book);
+  const removeBook = (id) => {
+    setBooks([...book.filter((book) => book.id !== id)]);
+  };
 
   return (
     <div>
@@ -37,6 +39,9 @@ const BookContainer = () => {
           <li key={book.id}>
             <p>{book.author}</p>
             <p>{book.title}</p>
+            <button type="button" onClick={() => removeBook(book.id)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>
