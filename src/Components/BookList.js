@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BookItem from './BookItem';
 
 const BookList = (props) => {
   const { books, removeBookProps } = props;
@@ -7,22 +8,18 @@ const BookList = (props) => {
   return (
     <ul>
       {books.map((book) => (
-        <li key={book.id}>
-          <p>{book.author}</p>
-          <p>{book.title}</p>
-          <button type="button" onClick={() => removeBookProps(book.id)}>
-            Remove
-          </button>
-        </li>
+        <BookItem
+          removeBookProps={removeBookProps}
+          bookProps={book}
+          key={book.id}
+        />
       ))}
     </ul>
   );
 };
 
 BookList.propTypes = {
-  /* eslint-disable-next-line */
-  books: PropTypes.array.isRequired,
-  /* eslint-enable */
+  books: PropTypes.node.isRequired,
   removeBookProps: PropTypes.func.isRequired,
 };
 
