@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './Components/Navigation';
-import Books from './Redux/Books/Books';
 import Categories from './Redux/Categories/Categories';
+import BookContainer from './Components/BookContainer';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <Books />
+          <BookContainer />
         </Route>
         <Route path="/categories">
           <Categories />
