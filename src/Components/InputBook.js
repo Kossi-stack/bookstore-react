@@ -5,22 +5,22 @@ import Button from './Button';
 const InputBooks = (props) => {
   const [state, setState] = useState({
     title: '',
-    author: '',
+    book: '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (state.title.trim() && state.author.trim()) {
-      props.addBookProps(state.title, state.author);
+    if (state.title.trim() && state.book !== '') {
+      props.addBookProps(state.title, state.book);
       setState({
         title: '',
-        author: '',
+        book: '',
       });
       setErrorMsg('');
     } else {
-      setErrorMsg('Please add title and author');
+      setErrorMsg('Please add title and book');
     }
   };
 
@@ -32,18 +32,18 @@ const InputBooks = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="title"
+          placeholder="Book title"
           onChange={handleChange}
           name="title"
           value={state.title}
         />
-        <input
-          placeholder="author"
-          onChange={handleChange}
-          name="author"
-          value={state.author}
-        />
-        <Button label="Submit" />
+        <select id="cars" name="book" onChange={handleChange}>
+          <option value="Category">Category</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Economy">Economy</option>
+          <option value="Passion">Passion</option>
+        </select>
+        <Button label="Add Book" />
         <p className="errorMsg">{errorMsg}</p>
       </form>
     </div>
