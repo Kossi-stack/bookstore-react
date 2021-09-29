@@ -5,18 +5,18 @@ import Button from './Button';
 const InputBooks = (props) => {
   const [state, setState] = useState({
     title: '',
-    book: '',
+    category: '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (state.title.trim() && state.book !== '') {
-      props.addBookProps(state.title, state.book);
+    if (state.title.trim() && state.category !== '') {
+      props.addBookProps(state.title, state.category);
       setState({
         title: '',
-        book: '',
+        category: '',
       });
       setErrorMsg('');
     } else {
@@ -37,7 +37,7 @@ const InputBooks = (props) => {
           name="title"
           value={state.title}
         />
-        <select id="cars" name="book" onChange={handleChange}>
+        <select id="cars" name="category" onChange={handleChange}>
           <option value="Category">Category</option>
           <option value="Fiction">Fiction</option>
           <option value="Economy">Economy</option>

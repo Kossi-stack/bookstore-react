@@ -9,15 +9,14 @@ const BookContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
-
-  const addNewBook = (title, author) => {
+  const addNewBook = (title, category) => {
     const newBook = {
       id: uuidv4(),
       title,
-      author,
+      category,
     };
 
-    // dispatch(addBook(newBook));
+    dispatch(addBook(newBook));
   };
 
   const deleteBook = (id) => {
