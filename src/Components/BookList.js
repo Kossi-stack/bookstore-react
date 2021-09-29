@@ -11,7 +11,7 @@ const BookList = (props) => {
         <BookItem
           removeBookProps={removeBookProps}
           bookProps={book}
-          key={book.id}
+          key={book.item_id}
         />
       ))}
     </ul>

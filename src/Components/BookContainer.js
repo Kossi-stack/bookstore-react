@@ -1,27 +1,24 @@
 /* eslint-disable */
-// import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, removeBook } from '../Redux/Books/Books';
+import { addBook, removeBook} from '../Redux/Books/Books';
 import InputBooks from './InputBook';
 import BookList from './BookList';
+import getPOST from '../FetchAPI/getPost';
+import { useEffect } from 'react';
 
 const BookContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
-  // const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-  // const appId = 'DXx22TZCYfuKQX6UV8m5';
-  // const url = `${baseUrl}/apps/${appId}/books`;
+  const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+  const appId = 'DXx22TZCYfuKQX6UV8m5';
+  const url = `${baseUrl}/apps/${appId}/books`;
+
+  useEffect(() => {
+    dispatch(getPOST());
+  }, [])
 
   const addNewBook = async (payload) => {
-    // const newBook = {
-    //   id: uuidv4(),
-    //   title,
-    //   category,
-    // };
-
-    // dispatch(addBook(newBook));
-    await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/DXx22TZCYfuKQX6UV8m5/books', {
+    await fetch(url, {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
@@ -31,13 +28,14 @@ const BookContainer = () => {
       .then((response) => response.ok)
       .then((data) => {
         if (data) {
-          dispatch(addBook(payload))
-        }}
-  )}
+          dispatch(addBook(payload));
+        }
+      });
+  };
 
   const deleteBook = (id) => {
     dispatch(removeBook(id));
-  };
+  }; 
 
   return (
     <div>

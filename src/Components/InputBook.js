@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
 import { v4 as uuidv4 } from 'uuid';
+import Button from './Button';
 
 const InputBooks = (props) => {
   const [state, setState] = useState({
@@ -15,9 +15,9 @@ const InputBooks = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const bookToAdd = { ...state }
+    const bookToAdd = { ...state };
     if (state.title.trim() && state.category !== '') {
-      bookToAdd.item_id = uuidv4()
+      bookToAdd.item_id = uuidv4();
       props.addBookProps(bookToAdd);
       setState({
         title: '',
