@@ -1,21 +1,20 @@
-/* eslint-disable */
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, removeBook } from '../Redux/Books/Books';
+import { useEffect } from 'react';
+import { addBook, removeBook, clearBooks } from '../Redux/Books/Books';
 import InputBooks from './InputBook';
 import BookList from './BookList';
 import getPOST from '../FetchAPI/getPost';
-import { useEffect } from 'react';
 import store from '../Redux/ConfigureStore';
 
 const BookContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
-  const baseUrl =
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+  const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
   const appId = 'DXx22TZCYfuKQX6UV8m5';
   const url = `${baseUrl}/apps/${appId}/books`;
 
   useEffect(() => {
+    store.dispatch(clearBooks());
     store.dispatch(getPOST());
   }, []);
 

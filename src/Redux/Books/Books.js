@@ -1,6 +1,7 @@
 const ADD_BOOK = 'bookStore/Books/ADD_BOOK';
 const REMOVE_BOOK = 'bookStore/Books/REMOVE_BOOK';
 const DISPLAY_BOOK = 'bookStore/Books/DISPLAY_BOOK';
+const CLEAR_BOOKS = 'bookStore/Books/CLEAR_BOOKS';
 
 const initialState = [];
 
@@ -19,13 +20,18 @@ export const displayBook = (payload) => ({
   payload,
 });
 
+export const clearBooks = () => ({
+  type: CLEAR_BOOKS,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...state, action.payload];
     case REMOVE_BOOK:
       return state.filter((book) => book.item_id !== action.payload);
-
+    case CLEAR_BOOKS:
+      return initialState;
     case DISPLAY_BOOK:
       return state.concat(action.payload);
 
