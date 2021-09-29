@@ -20,6 +20,7 @@ const InputBooks = (props) => {
       bookToAdd.item_id = uuidv4();
       props.addBookProps(bookToAdd);
       setState({
+        ...state,
         title: '',
         category: '',
       });

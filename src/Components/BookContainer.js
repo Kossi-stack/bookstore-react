@@ -1,21 +1,23 @@
 /* eslint-disable */
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, removeBook} from '../Redux/Books/Books';
+import { addBook, removeBook } from '../Redux/Books/Books';
 import InputBooks from './InputBook';
 import BookList from './BookList';
 import getPOST from '../FetchAPI/getPost';
 import { useEffect } from 'react';
+import store from '../Redux/ConfigureStore';
 
 const BookContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
-  const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+  const baseUrl =
+    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
   const appId = 'DXx22TZCYfuKQX6UV8m5';
   const url = `${baseUrl}/apps/${appId}/books`;
 
   useEffect(() => {
-    dispatch(getPOST());
-  }, [])
+    store.dispatch(getPOST());
+  }, []);
 
   const addNewBook = async (payload) => {
     await fetch(url, {
@@ -33,9 +35,13 @@ const BookContainer = () => {
       });
   };
 
-  const deleteBook = (id) => {
-    dispatch(removeBook(id));
-  }; 
+  const deleteBook = async (id) => {
+    await fetch(`${url}/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.text())
+      .then(dispatch(removeBook(id)));
+  };
 
   return (
     <div>
