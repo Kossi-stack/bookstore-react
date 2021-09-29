@@ -1,4 +1,4 @@
-// import { useDispatch } from 'react-redux';
+/* eslint-disable camelcase */
 import { displayBook } from '../Redux/Books/Books';
 
 const getPOST = () => async (dispatch) => {
@@ -6,11 +6,9 @@ const getPOST = () => async (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       const bookObj = Object.entries(data);
-      /* eslint-disable */
       const bookArray = bookObj.map(([item_id, value]) => {
         const [eachBook] = value;
         return { ...eachBook, item_id };
-        /* eslint-enable */
       });
       dispatch(displayBook(bookArray));
     });
