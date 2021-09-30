@@ -43,9 +43,11 @@ const BookContainer = () => {
   };
 
   return (
-    <div>
-      <BookList books={books} removeBookProps={deleteBook} />
-      <InputBooks addBookProps={addNewBook} />
+    <div className="container">
+      <div className="wrapper">
+        <BookList books={books} removeBookProps={deleteBook} />
+        <InputBooks addBookProps={addNewBook} />
+      </div>
     </div>
   );
 };

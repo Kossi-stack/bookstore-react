@@ -6,7 +6,7 @@ const BookList = (props) => {
   const { books, removeBookProps } = props;
 
   return (
-    <ul>
+    <ul className="items">
       {books.map((book) => (
         <BookItem
           removeBookProps={removeBookProps}
