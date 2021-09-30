@@ -25,7 +25,7 @@ const InputBooks = (props) => {
       });
       setErrorMsg('');
     } else {
-      setErrorMsg('Please add title and book');
+      setErrorMsg('Please add title and choose category ***');
     }
   };
 
@@ -35,14 +35,17 @@ const InputBooks = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <hr className="hr" />
+      <h2 className="mdHeading">ADD NEW BOOK</h2>
+      <form onSubmit={handleSubmit} className="form">
         <input
           placeholder="Book title"
           onChange={handleChange}
           name="title"
           value={state.title}
+          className="titleInput"
         />
-        <select id="cars" name="category" onChange={handleChange}>
+        <select id="cars" name="category" onChange={handleChange} className="selectInput">
           <option value="Category">Category</option>
           <option value="Fiction">Fiction</option>
           <option value="Economy">Economy</option>
