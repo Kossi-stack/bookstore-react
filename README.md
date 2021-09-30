@@ -1,17 +1,18 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 ###  Book-store
-<!-- ![screenshot](./images/table.png) -->
+![screenshot](./public/bookstore.png)
 
 ## Description
-- This project is about a bookstore where user can store the title and author of thier favourite books, and can also remove books, 
+- This project is about a bookstore where user can store the title and choose category of thier favourite books, and can also remove books, 
 
 ## Built With
 This project is build with:
 - CSS
 - React
 
-<!-- here is the live link: [Live Demo](https://julie-ify.github.io/Book-Store/) -->
+here is the live link: [Live Demo](https://elated-jennings-86d14f.netlify.app/)
+
 ## Getting Started;
 
 To get the content of this project locally you need to run this command in your terminal:
