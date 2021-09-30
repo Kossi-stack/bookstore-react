@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { addBook, removeBook, clearBooks } from '../Redux/Books/Books';
 import InputBooks from './InputBook';
 import BookList from './BookList';
-import getPOST from '../FetchAPI/getPost';
+import getBooks from '../FetchAPI/getBooks';
 import store from '../Redux/ConfigureStore';
 
 const BookContainer = () => {
@@ -15,7 +15,7 @@ const BookContainer = () => {
 
   useEffect(() => {
     store.dispatch(clearBooks());
-    store.dispatch(getPOST());
+    store.dispatch(getBooks());
   }, []);
 
   const addNewBook = async (payload) => {
