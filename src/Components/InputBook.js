@@ -52,8 +52,8 @@ const InputBooks = (props) => {
           <option value="Passion">Passion</option>
         </select>
         <Button label="Add Book" />
-        <p className="errorMsg">{errorMsg}</p>
       </form>
+      <p className="errorMsg">{errorMsg}</p>
     </div>
   );
 };

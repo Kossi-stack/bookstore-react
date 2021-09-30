@@ -202,7 +202,7 @@ ul {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
-  margin: 2rem auto 4rem;
+  margin: 2rem auto 2rem;
 }
 
 .titleInput {
@@ -255,11 +255,21 @@ ul {
 
 .errorMsg {
   color: red;
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
 /* Media query for Desktop version */
 
 @media (min-width: 700px) {
+  .navBarWrap {
+    justify-content: flex-start;
+  }
+
+  .navLinks {
+    margin-left: 3rem;
+  }
+
   .item {
     flex-direction: row;
     column-gap: 2rem;
