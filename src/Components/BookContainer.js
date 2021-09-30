@@ -1,26 +1,45 @@
-// import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBook, removeBook } from '../Redux/Books/Books';
+import { useEffect } from 'react';
+import { addBook, removeBook, clearBooks } from '../Redux/Books/Books';
 import InputBooks from './InputBook';
 import BookList from './BookList';
+import getPOST from '../FetchAPI/getPost';
+import store from '../Redux/ConfigureStore';
 
 const BookContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
+  const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+  const appId = 'DXx22TZCYfuKQX6UV8m5';
+  const url = `${baseUrl}/apps/${appId}/books`;
 
-  const addNewBook = (title, author) => {
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-    };
+  useEffect(() => {
+    store.dispatch(clearBooks());
+    store.dispatch(getPOST());
+  }, []);
 
-    dispatch(addBook(newBook));
+  const addNewBook = async (payload) => {
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-type': 'application/json; Charset=UTF-8',
+      },
+    })
+      .then((response) => response.ok)
+      .then((data) => {
+        if (data) {
+          dispatch(addBook(payload));
+        }
+      });
   };
 
-  const deleteBook = (id) => {
-    dispatch(removeBook(id));
+  const deleteBook = async (id) => {
+    await fetch(`${url}/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.text())
+      .then(dispatch(removeBook(id)));
   };
 
   return (

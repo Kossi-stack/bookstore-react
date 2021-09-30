@@ -11,7 +11,7 @@ const BookList = (props) => {
         <BookItem
           removeBookProps={removeBookProps}
           bookProps={book}
-          key={book.id}
+          key={book.item_id}
         />
       ))}
     </ul>
@@ -19,7 +19,9 @@ const BookList = (props) => {
 };
 
 BookList.propTypes = {
-  books: PropTypes.node.isRequired,
+  /* eslint-disable */
+  books: PropTypes.array.isRequired,
+  /* eslint-enable */
   removeBookProps: PropTypes.func.isRequired,
 };
 

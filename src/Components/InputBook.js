@@ -1,26 +1,31 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 import Button from './Button';
 
 const InputBooks = (props) => {
   const [state, setState] = useState({
+    item_id: '',
     title: '',
-    author: '',
+    category: '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (state.title.trim() && state.author.trim()) {
-      props.addBookProps(state.title, state.author);
+
+    const bookToAdd = { ...state };
+    if (state.title.trim() && state.category !== '') {
+      bookToAdd.item_id = uuidv4();
+      props.addBookProps(bookToAdd);
       setState({
         title: '',
-        author: '',
+        category: '',
       });
       setErrorMsg('');
     } else {
-      setErrorMsg('Please add title and author');
+      setErrorMsg('Please add title and book');
     }
   };
 
@@ -32,18 +37,18 @@ const InputBooks = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="title"
+          placeholder="Book title"
           onChange={handleChange}
           name="title"
           value={state.title}
         />
-        <input
-          placeholder="author"
-          onChange={handleChange}
-          name="author"
-          value={state.author}
-        />
-        <Button label="Submit" />
+        <select id="cars" name="category" onChange={handleChange}>
+          <option value="Category">Category</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Economy">Economy</option>
+          <option value="Passion">Passion</option>
+        </select>
+        <Button label="Add Book" />
         <p className="errorMsg">{errorMsg}</p>
       </form>
     </div>

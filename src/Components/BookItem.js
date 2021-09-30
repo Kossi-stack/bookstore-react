@@ -5,10 +5,10 @@ const BookItem = (props) => {
   const { removeBookProps, bookProps } = props;
 
   return (
-    <li key={bookProps.id}>
-      <p>{bookProps.author}</p>
+    <li key={bookProps.item_id}>
+      <p>{bookProps.category}</p>
       <p>{bookProps.title}</p>
-      <button type="button" onClick={() => removeBookProps(bookProps.id)}>
+      <button type="button" onClick={() => removeBookProps(bookProps.item_id)}>
         Remove
       </button>
     </li>
@@ -17,9 +17,9 @@ const BookItem = (props) => {
 
 BookItem.propTypes = {
   bookProps: PropTypes.shape({
-    id: PropTypes.number,
+    item_id: PropTypes.node,
     title: PropTypes.string,
-    author: PropTypes.string,
+    category: PropTypes.string,
   }).isRequired,
   removeBookProps: PropTypes.func.isRequired,
 };
